@@ -1,7 +1,10 @@
-function [ output_args ] = GetHistogramList( input_args )
+function [ rawImages ] = GetHistogramList( imageDirectory )
 %GETHISTOGRAMLIST Summary of this function goes here
-    images = LoadImages('./');
-    
+    rawImages = LoadImages('./');
+    nImages = length(rawImages);
+    for i = 1:nImages
+        imshow(rawImages{i});
+    end
     
     
 end
