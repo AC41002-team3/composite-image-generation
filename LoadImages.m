@@ -8,7 +8,6 @@ function [ imageList ] = LoadImages( imageDirectory )
         currentFileName = rawImages(i).name;
         currentRawImage = imread(strcat(imageDirectory,currentFileName));
         imageList{i} = currentRawImage;
-        imshow(imageList{i});
     end
 end
 

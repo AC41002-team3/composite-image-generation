@@ -1,0 +1,16 @@
+function [ yRed, yGreen, yBlue ] = GetColourHistogram( image )
+%GETCOLOURHISTOGRAM get the histogram values for colour image, and the bins
+% SOURCE: https://uk.mathworks.com/matlabcentral/answers/181624-how-to-get-color-histogram-of-an-image
+    %Split into RGB Channels
+    Red = image(:,:,1);
+    Green = image(:,:,2);
+    Blue = image(:,:,3);
+    %Get histValues for each channel
+    [yRed, x] = imhist(Red);
+    yGreen = imhist(Green);
+    yBlue = imhist(Blue);
+        plot(x, yRed, 'Red', x, yGreen, 'Green', x, yBlue, 'Blue');
+    %probably won't return bins as don't need them,
+    %but I'll keep them here for reference rn
+end
+
