@@ -5,7 +5,5 @@ function [ rawImages ] = GetHistogramList( imageDirectory )
     for i = 1:nImages
         imshow(rawImages{i});
     end
-    
-    
 end
 
