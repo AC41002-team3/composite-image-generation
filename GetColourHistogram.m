@@ -9,6 +9,7 @@ function [ yRed, yGreen, yBlue ] = GetColourHistogram( image )
     yRed = imhist(Red);
     yGreen = imhist(Green);
     yBlue = imhist(Blue);
+    %retArray = [yRed, yGreen, yBlue];
     %plot([0:255], yRed, 'Red', [0:255], yGreen, 'Green', [0:255], yBlue, 'Blue');
     %probably won't return bins as don't need them,
     %but I'll keep them here for reference rn
