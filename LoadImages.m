@@ -1,10 +1,6 @@
-%%Load image target, REQUIRES FULL FILE AND FOLDER PATHS
-function [tgt,tles] = LoadImages (tgtFilename, tleFolder)
-currentFolder = cd(tleFolder);
-tgt= imread(tgtFilename);
-cd(tleFolder);
-%%
+function [tles] = LoadImages (tleFolder)
 %%load files from selected directory
+currentFolder = cd(tleFolder);
 tlesLs = dir('*.jpg');
 for x=1:length(tlesLs)
     curTle=imread(tlesLs(x).name);
