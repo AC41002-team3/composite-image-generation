@@ -1,7 +1,7 @@
 %%Get number of tiles and the target RGB values for them
-function tileRGB = TileImage (src, tileN)
+function [tileRGB,xTLen,yTLen,xTiles,yTiles] = TileImage (src, tileN)
     %%Get the number of x and y pixels
-    [ypx,xpx] = size(src);
+    [xpx,ypx] = size(src);
     %%
     %%Caluclate X and Y tile numbers||DOES NOT WORK WITH SQUARES
     dvsrs = divisor(tileN);
@@ -22,5 +22,5 @@ function tileRGB = TileImage (src, tileN)
                 tRGB{i,j}= {mean(mean(srcTl))};                
             end            
         end
-    tileRGB=tRGB;
+    tileRGB=tRGB(~cellfun('isempty',tRGB));
 end
