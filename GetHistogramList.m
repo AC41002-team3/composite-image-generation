@@ -9,6 +9,11 @@ function [ histograms ] = GetHistogramList( imageDirectory )
         histograms{i}=GetColourHistogram(rawImages{i});
     end
     %plots histogram of {1}, for reference
-    %plot(0:255, histograms{1,1}, 'Red', 0:255, histograms{1,2}, 'Green', 0:255,  histograms{1,3}, 'Blue');
+    %M = histograms{1,1}
+    histograms{1}{1}
+    subplot(2,2,1),
+    plot(0:255, histograms{1}{1}, 'Red', 0:255, histograms{1}{2}, 'Green', 0:255,  histograms{1}{3}, 'Blue');
+    subplot(2,2,2),
+    plot(0:255, histograms{2}{1}, 'Red', 0:255, histograms{2}{2}, 'Green', 0:255,  histograms{2}{3}, 'Blue');
 end
 
