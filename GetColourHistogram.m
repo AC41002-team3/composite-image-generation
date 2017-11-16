@@ -9,7 +9,9 @@ function [ retArray ] = GetColourHistogram( image )
     yRed = imhist(Red);
     yGreen = imhist(Green);
     yBlue = imhist(Blue);
-    
+    yRed = yRed./sum(yRed(:));
+    yGreen = yGreen./sum(yGreen(:));
+    yBlue = yBlue./sum(yBlue(:));
     retArray = {yRed, yGreen, yBlue};
     %plot([0:255], yRed, 'Red', [0:255], yGreen, 'Green', [0:255], yBlue, 'Blue');
     %probably won't return bins as don't need them,

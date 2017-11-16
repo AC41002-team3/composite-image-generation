@@ -1,6 +1,6 @@
 function [ histograms ] = GetHistogramList( imageDirectory )
 %GETHISTOGRAMLIST Summary of this function goes here
-    rawImages = LoadImages('../Assignments/Images/out_manmade_1k/');
+    rawImages = LoadImages(imageDirectory);
     nImages = length(rawImages);
         %Split into RGB Channels
     %for i = 1:nImages
@@ -8,6 +8,7 @@ function [ histograms ] = GetHistogramList( imageDirectory )
         %imshow(rawImages{i}); default bins 256?
         histograms{i}=GetColourHistogram(rawImages{i});
     end
+    delete(gcp('nocreate'))
     %plots histogram of {1}, for reference
     %M = histograms{1,1}
     histograms{1}{1}
