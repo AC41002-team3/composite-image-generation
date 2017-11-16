@@ -1,7 +1,9 @@
 function [  ] = IdentifyClasses(  )
 %IDENTIFYCLASSES Summary of this function goes here
 %   Detailed explanation goes here
-    histograms = GetHistogramList('test');
+    manmadeHistograms = GetHistogramList('../Assignments/Images/out_manmade_1k/');
+    naturalHistograms = GetHistogramList('../Assignments/Images/out_natural_1k/');
+    
     
 
 
