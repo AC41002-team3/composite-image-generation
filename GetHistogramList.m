@@ -8,7 +8,7 @@ function [ histograms ] = GetHistogramList( imageDirectory )
         %imshow(rawImages{i}); default bins 256?
         histograms{i}=GetColourHistogram(rawImages{i});
     end
-    delete(gcp('nocreate'))
+    %delete(gcp('nocreate'))
     %plots histogram of {1}, for reference
     %M = histograms{1,1}
     %histograms{1}{1}

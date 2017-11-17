@@ -1,9 +1,0 @@
-function [ chi ] = ChiSquareDistance( lHistogram rHistogram )
-%CHISQUAREDISTANCE Summary of this function goes here
-%   Detailed explanation goes here
-    s = lHistogram + rHistogram;
-    s(s==0) = 1;
-    dis1 = 0.5*sum((h-hs).^2./s);
-
-end
-
