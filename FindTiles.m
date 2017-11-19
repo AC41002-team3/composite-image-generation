@@ -16,7 +16,6 @@ function comImg = FindTiles (srcImgs,tgtImg)
                 match=j;
             end
         end
-        comImg(i)=match;
-   
+        comImg(i)=match;  
     end
 end
