@@ -4,43 +4,40 @@ function [ inManmade, inNatural ] = Test( testHists, trainManmade, trainNatural)
 %1 = manmade %2 = natural
     inNatural = 0;
     inManmade = 0;
-    histCalc{1}{1} = 0;
+    compareManmade{1}{1} = 0;
+    compareNatural{1}{1} = 0;
     nTestHists = length(testHists);
     nTrainManmade = length(trainManmade);
     nTrainNatural = length(trainNatural);
-    nTotal = nTrainManmade;
-    knnList = zeros(1,nTestHists);
-    for i=1:nTestHists
-        allDistances = zeros(nTotal,1);
-       for j=1:nTotal
-           final = 0;
-           for a=1:3
-               histCalc{i}{a} = ChiSquareDistance(testHists{i}{a}, trainManmade{j}{a}) - ChiSquareDistance(testHists{i}{a}, trainNatural{j}{a}); %>0 natural
+    manmadeKnnList = zeros(1,nTestHists);
+    naturalKnnList = zeros(1,nTestHists);
+    for i=1:nTestHists %for each test image
+       allDistances = zeros(nTrainManmade,1);
+       for j=1:nTrainManmade %for each manmade trainer
+           for a=1:3 % for each colour
+           compareManmade{i}{a} = ChiSquareDistance(testHists{i}{a}, trainManmade{j}{a});
+           %compareManmade{i}{a} = compareManmade{i}{a};
            end
-           histCalc{i};
-           final = mean([histCalc{i}{1:3}]);
-           allDistances(j) = final;
-       end 
-       knnLists(i) = allDistances(knnsearch(allDistances, 0));
-       %if histCalc{i}{1} + histCalc{i}{2} > 0 || histCalc{i}{1} + histCalc{i}{3} > 0 || histCalc{i}{2} + histCalc{i}{3} > 0
-       %        inNatural = inNatural + 1;
-       %    else
-       %        inManmade = inManmade + 1;
-       %end
-       knnLists(i);
-       if knnLists(i) > 0
-           inNatural = inNatural + 1;
-       else if knnLists(i) == 0
-           wow = "It was an exact match!"
-       else
-           inManmade = inManmade + 1;
+           allDistances(j) = mean([compareManmade{i}{1:3}]);
        end
-       %if histCalc{i}{1} + histCalc{i}{2} + histCalc{i}{3} > 0
-       %     inNatural = inNatural + 1;
-       %else
-       %     inManmade = inManmade + 1;
-       %end
-        end
+       manmadeKnnList(i) = allDistances(knnsearch(allDistances, 0));
+    end
+    for i=1:nTestHists %for each test image
+       allDistances = zeros(nTrainNatural,1);
+       for j=1:nTrainNatural %for each manmade trainer
+           for a=1:3 % for each colour
+           compareNatural{i}{a} = ChiSquareDistance(testHists{i}{a}, trainNatural{j}{a});
+           %compareNatural{i}{a} = compareNatural{i}{a} * 2;
+           end
+           allDistances(j) = mean([compareNatural{i}{1:3}]);
+       end
+       naturalKnnList(i) = allDistances(knnsearch(allDistances, 0));
+    end
+    for i=1:nTestHists
+        if naturalKnnList(i) < manmadeKnnList(i)
+            inNatural = inNatural + 1;
+        else
+            inManmade = inManmade + 1;
     end
 end
 
