@@ -6,9 +6,8 @@ function [ ] = CalculateDifference( )
     [manmadeInManmade, manmadeInNatural] = Test(testManmade, trainManmade, trainNatural);
     [naturalInManmade, naturalInNatural] = Test(testNatural, trainManmade, trainNatural);
     manmadeInManmade
-    manmadeInNatural
-    naturalInManmade
     naturalInNatural
     %Test(testNatural, trainManmade, trainNatural);
 end
 
+     
