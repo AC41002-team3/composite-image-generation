@@ -24,7 +24,7 @@ function [ inManmade, inNatural ] = Test( testHists, trainManmade, trainNatural)
     end
     for i=1:nTestHists %for each test image
        allDistances = zeros(nTrainNatural,1);
-       for j=1:nTrainNatural %for each manmade trainer
+       for j=1:nTrainNatural %for each natural trainer
            for a=1:3 % for each colour
            compareNatural{i}{a} = ChiSquareDistance(testHists{i}{a}, trainNatural{j}{a});
            %compareNatural{i}{a} = compareNatural{i}{a} * 2;
