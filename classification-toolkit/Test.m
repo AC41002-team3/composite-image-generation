@@ -1,4 +1,4 @@
-function [ inManmade, inNatural ] = Test( testHists, trainManmade, trainNatural) %send in, get percentage of each classified
+function [ inManmade, inNatural ] = Test( testHists, trainManmade, trainNatural, k) %send in, get percentage of each classified
 %TEST Summary of this function goes here
 %   Detailed explanation goes here
 %1 = manmade %2 = natural
@@ -27,7 +27,7 @@ for i=1:nTestHists %for each test image
         allDistances(j) = sumup;
     end
     knnadd = zeros(1,4);
-    knnadd = sum(allDistances(knnsearch(allDistances, 0, 'K', 4)));
+    knnadd = sum(allDistances(knnsearch(allDistances, 0, 'K', k)));
     manmadeKnnList(i) = knnadd;
     %manmadeKnnList(i) = allDistances(knnsearch(allDistances, 0));
 end
@@ -47,7 +47,7 @@ for i=1:nTestHists %for each test image
     end
     knnadd = zeros(1,4);
     %knnsearch(allDistances, 0)
-    knnadd = sum(allDistances(knnsearch(allDistances, 0, 'K', 4)));
+    knnadd = sum(allDistances(knnsearch(allDistances, 0, 'K', k))); %k 4 by default
     naturalKnnList(i) = knnadd;
     %naturalKnnList(i) = allDistances(knnsearch(allDistances, 0))
 end

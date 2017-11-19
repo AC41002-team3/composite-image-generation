@@ -1,7 +1,7 @@
-function [ testManmade, testNatural ] = RunTestSet()
+function [ testManmade, testNatural ] = RunTestSet(testManmadeDir, testNaturalDir)
 %RUNTESTSET Summary of this function goes here
 %   Detailed explanation goes here
-    testManmade = GetHistogramList('../../Assignments/Images/out_manmade_test_1k/');
-    testNatural = GetHistogramList('../../Assignments/Images/out_natural_test_1k/');
+    testManmade = GetHistogramList(testManmadeDir);
+    testNatural = GetHistogramList(testNaturalDir);
 end
 
