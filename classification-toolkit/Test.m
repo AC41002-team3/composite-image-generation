@@ -58,4 +58,8 @@ for i=1:nTestHists
         inManmade = inManmade + 1;
     end
 end
+inNatural = (inNatural / nTestHists) * 100;
+inManmade = (inManmade / nTestHists) * 100;
+end
+
 
