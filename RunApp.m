@@ -4,5 +4,6 @@ function cIm = RunApp (src,tgt,tileN)
     srcRGB=GetSrcRGBs(srcR);
     matches=FindTiles(srcRGB,tRGB);
     cIm=CreateImage(srcR,matches,xT,yT);
+    cIm=imgaussfilt(cIm,1);
     imshowpair(tgt,cIm,'montage');
 end

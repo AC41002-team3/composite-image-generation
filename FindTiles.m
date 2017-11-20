@@ -10,7 +10,8 @@ function comImg = FindTiles (srcImgs,tgtImg)
             difR=abs(diff([pTile{1}(1),tTile{1}(1)]));
             difG=abs(diff([pTile{1}(2),tTile{1}(2)]));
             difB=abs(diff([pTile{1}(3),tTile{1}(3)]));
-            difA=(difR+difG+difB)/3;
+            difA=(difR+difG+difB)/3;           
+            
             if(difA<matchVal)
                 matchVal=difA;
                 match=j;
