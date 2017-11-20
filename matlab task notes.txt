@@ -3,12 +3,12 @@ TASKS
 
 Part A
 
-1. Load in image to be composited
-2. Load in training set
+DONE 1. Load in image to be composited
+DONE 2. Load in training set
 3. Crop training set to appropriate scale 
-	- Ratio outputwidth:output:height to Tile width divisors i.e. 600 tiles 600:1 300:2 etc.
+	DONE- Ratio outputwidth:output:height to Tile width divisors i.e. 600 tiles 		600:1 300:2 etc.
 	then scale training set widths/heights to size as close as possible
-4. Histogram of each corresponding tile area on original image, build histograms of each training image, 
+DONE (RGB) 4. Histogram of each corresponding tile area on original image, build histograms of each training image, 
 	- keep a store of best candidates FOREACH tile area, 
 	- suplant if new training image > old training image in histogram comparison (similarity)
 5. Optionally - add texture/structure etc later
