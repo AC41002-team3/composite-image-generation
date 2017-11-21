@@ -1,6 +1,6 @@
 function [cIm,timer] = RunApp (srcF,tgtF,tileN)
     tic;
-    src=LoadImages(srcF);
+    src=LoadSourceImages(srcF);
     tgt=LoadTargetImage(tgtF);
     [tRGB,x,y,xT,yT,tgt] = TileImage(tgt,tileN);
     srcR = ResizeSourceImages(src,x,y);

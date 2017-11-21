@@ -2,14 +2,16 @@ function [ manmadeInManmade naturalInNatural timeTaken ] = CalculateDifference(t
 %CALCULATEDIFFERENCE Summary of this function goes here
 %   Detailed explanation goes here
     tic
-    trainManmadeDir = strcat(trainManmadeDir, '/');
-    trainNaturalDir = strcat(trainNaturalDir, '/');
-    testManmadeDir = strcat(testManmadeDir, '/');
-    testNaturalDir = strcat(testNaturalDir, '/');
     [trainManmade,trainNatural] = IdentifyClasses(trainManmadeDir, trainNaturalDir); %hists of training
-    [testManmade, testNatural] = RunTestSet(testManmadeDir, testNaturalDir); %hists of manmade
-    [manmadeInManmade, manmadeInNatural] = Test(testManmade, trainManmade, trainNatural, k);
-    [naturalInManmade, naturalInNatural] = Test(testNatural, trainManmade, trainNatural, k);
+    if testNaturalDir == 'na'
+        %testManmadeDir = strcat(testManmadeDir, '/');
+        testManmade = GetHistogramList(testManmadeDir);
+        [manmadeInManmade, naturalInNatural] = Test(testManmade, trainManmade, trainNatural, k);
+    else
+        [testManmade, testNatural] = RunTestSet(testManmadeDir, testNaturalDir); %hists of manmade
+        [manmadeInManmade, manmadeInNatural] = Test(testManmade, trainManmade, trainNatural, k);
+        [naturalInManmade, naturalInNatural] = Test(testNatural, trainManmade, trainNatural, k);
+    end
     manmadeInManmade;
     naturalInNatural;
     timeTaken = toc;
