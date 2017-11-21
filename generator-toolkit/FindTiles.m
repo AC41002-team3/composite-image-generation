@@ -1,7 +1,7 @@
 %%Find the closest images for tiles
 function comImg = FindTiles (srcImgs,tgtImg)
     comImg=0;
-    parfor i=1:length(tgtImg)
+    for i=1:length(tgtImg)
         match=0;
         matchVal=255;
         for j=1:length(srcImgs)
