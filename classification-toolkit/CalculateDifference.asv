@@ -4,9 +4,7 @@ function [ manmadeInManmade naturalInNatural timeTaken ] = CalculateDifference(t
     tic
     [trainManmade,trainNatural] = IdentifyClasses(trainManmadeDir, trainNaturalDir); %hists of training
     if testNaturalDir == 'na'
-        %testManmadeDir = strcat(testManmadeDir, '/');
-        testManmade = GetHistogramList(testManmadeDir);
-        [manmadeInManmade, naturalInNatural] = Test(testManmade, trainManmade, trainNatural, k);
+        [manmadeInManmade, naturalInNatural] = Test(testManmadeDir)
     else
         [testManmade, testNatural] = RunTestSet(testManmadeDir, testNaturalDir); %hists of manmade
         [manmadeInManmade, manmadeInNatural] = Test(testManmade, trainManmade, trainNatural, k);

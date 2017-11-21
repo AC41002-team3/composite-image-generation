@@ -1,4 +1,4 @@
-function [tles] = LoadImages (tleFolder)
+function [tles] = LoadSourceImages (tleFolder)
 %%load files from selected directory
 currentFolder = cd(tleFolder);
 tlesLs = dir('*.jpg');
