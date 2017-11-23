@@ -1,6 +1,7 @@
 %%Find the closest images for tiles
-function comImg = FindTiles (srcImgs,tgtImg)
+function [comImg, avgRGBDif] = FindTiles (srcImgs,tgtImg)
     comImg=0;
+    totalDif=0;
     parfor i=1:length(tgtImg)
         match=0;
         matchVal=255;
@@ -17,6 +18,8 @@ function comImg = FindTiles (srcImgs,tgtImg)
                 match=j;
             end
         end
-        comImg(i)=match;  
+        comImg(i)=match;
+        totalDif=totalDif+matchVal;
     end
+    avgRGBDif=totalDif/(length(tgtImg)*length(srcImgs));
 end

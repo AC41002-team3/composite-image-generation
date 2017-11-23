@@ -1,12 +1,13 @@
 %%Get number of tiles and the target RGB values for them
-function [tileRGB,xTLen,yTLen,xTiles,yTiles,tgt] = TileImage (tgt, tileN)
-    %%Get the number of x and y pixels
+function [tileRGB,xTLen,yTLen,xTiles,yTiles,tgt] = TileImage (tgt, tileN,xpx,ypx)
+    %%Set the number of x and y pixels    
+    tgt=imresize(tgt,[ypx xpx]);
     [xpx,ypx,zpx] = size(tgt);
     %%
-    %%Caluclate X and Y tile numbers||DOES NOT WORK WITH SQUARES OR PRIMES
-    dvsrs = divisor(tileN);
-    xTiles = dvsrs(floor((length(dvsrs)/2)));
-    yTiles = dvsrs(floor((length(dvsrs)/2)+1));
+    %%Caluclate X and Y tile numbers||DOES NOT WORK WITH SQUARES
+    tileDvsrs = divisor(tileN);
+    xTiles = tileDvsrs(floor((length(tileDvsrs)/2)));
+    yTiles = tileDvsrs(floor((length(tileDvsrs)/2)+1));
     %%
     %%Calculate tile widths and heights
     xTLen = round(xpx/xTiles);
