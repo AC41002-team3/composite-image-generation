@@ -6,10 +6,11 @@ function [cIm,timer,avgRGBDIf] = RunApp (srcF,tgtF,tileN,xpx,ypx)
     srcR = ResizeSourceImages(src,x,y);
     clearvars src x y;
     srcRGB=GetSrcRGBs(srcR);
-    [matches,avgRGBDIf]=FindTiles(srcRGB,tRGB);
+    [matches,~]=FindTiles(srcRGB,tRGB);
     clearvars srcRGB tRGB;
     cIm=CreateImage(srcR,matches,xT,yT);
     cIm=imgaussfilt(cIm,1);
+    avgRGBDIf=TestPixels(cIm,tgt);
     timer=toc;
     imshowpair(tgt,cIm,'montage');
 end

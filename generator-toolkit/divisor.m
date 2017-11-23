@@ -1,3 +1,4 @@
+%SOURCE: https://uk.mathworks.com/matlabcentral/fileexchange/24500-divisor-n-
 function d = divisor(n)
 %% divisor : provides a list of integer divisors of a number.
 % divisor(n) : row vector of all distinct divisors of a positive integer N, 
